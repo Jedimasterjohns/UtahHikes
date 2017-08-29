@@ -1,0 +1,12 @@
+<h2>Hikes</h2>
+
+<div class="navLinks">
+  <a [routerLink]="['./main']">Main</a> |
+  <a [routerLink]="['./more-info']">More Info</a> |
+  Enter id: <input #id size="6">
+  <button (click)="goToHike(id.value)">Go</button>
+</div>
+
+<div class="hikes-area">
+  <router-outlet></router-outlet>
+</div>

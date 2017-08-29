@@ -5,14 +5,13 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes, } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { HikesComponent } from './hikes/hikes.component';
 
 const routes: Routes = [
   // basic routes
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'about', component: HikesComponent },
-  { path: 'contact', component: Component },
-  { path: 'contactus', redirectTo: 'contact' },
 
   // authentication demo
   { path: 'login', component: LoginComponent },
@@ -24,15 +23,17 @@ const routes: Routes = [
 
   // nested
   {
-    path: 'products',
-    component: ProductsComponent,
+    path: 'hikes',
+    component: HikesComponent,
     children: childRoutes
   }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    HikesComponent
   ],
   imports: [
     BrowserModule,
