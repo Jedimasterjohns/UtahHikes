@@ -7,6 +7,11 @@ import { RouterModule, Routes, } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HikesComponent } from './hikes/hikes.component';
+import { ProtectedComponent } from './protected/protected.component';
+import { LoginComponent } from './login/login.component';
+
+import { AUTH_PROVIDERS } from './auth.service';
+import { LoggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
   // basic routes
@@ -33,7 +38,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    HikesComponent
+    HikesComponent,
+    ProtectedComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
