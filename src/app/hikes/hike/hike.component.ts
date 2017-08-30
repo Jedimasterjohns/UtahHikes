@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './hike.component.html',
   styleUrls: ['./hike.component.css']
 })
-export class HikeComponent implements OnInit {
+export class HikeComponent {
   id: string;
 
   constructor(private route: ActivatedRoute) {

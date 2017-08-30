@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { 
   ActivatedRoute,
   Router
@@ -9,7 +9,7 @@ import {
   templateUrl: './hikes.component.html',
   styleUrls: ['./hikes.component.css']
 })
-export class HikesComponent implements OnInit {
+export class HikesComponent {
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 

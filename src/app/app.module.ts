@@ -13,6 +13,11 @@ import { LoginComponent } from './login/login.component';
 import { AUTH_PROVIDERS } from './auth.service';
 import { LoggedInGuard } from './logged-in.guard';
 
+import {
+  routes as childRoutes,
+  HikesModule
+} from './hikes/hikes.module';
+
 const routes: Routes = [
   // basic routes
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -47,7 +52,10 @@ const routes: Routes = [
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    AUTH_PROVIDERS,
+    LoggedInGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
