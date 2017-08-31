@@ -50,7 +50,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routes) // <-- routes
   ],
   providers: [
     AUTH_PROVIDERS,
