@@ -43,7 +43,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    HikesComponent,
     ProtectedComponent,
     LoginComponent
   ],
@@ -51,6 +50,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HikesModule,
     RouterModule.forRoot(routes) // <-- routes
   ],
   providers: [
