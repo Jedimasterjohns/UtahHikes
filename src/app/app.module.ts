@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes, } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootrstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +18,7 @@ import {
   routes as childRoutes,
   HikesModule
 } from './hikes/hikes.module';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 const routes: Routes = [
   // basic routes
@@ -44,13 +46,15 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     ProtectedComponent,
-    LoginComponent
+    LoginComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     HikesModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(routes) // <-- routes
   ],
   providers: [
