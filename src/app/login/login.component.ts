@@ -1,42 +1,45 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
-import { GlobalEventsManagerService } from "../global-events-manager.service"
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, } from '@angular/router';
 
+import { AlertService, AuthService } from '../_services/index';
 
 @Component({
+  moduleId: module.id,
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  providers: [GlobalEventsManagerService]
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  message: string;
+export class LoginComponent implements OnInit {
+  model: any = {};
+  loading = false;
+  returnUrl: string;
 
-  constructor(public authService: AuthService, private _router: Router,
-   private globalEventsManager: GlobalEventsManagerService) {
-    this.message = '';
-   }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthService,
+    private alertService: AlertService) { }
 
-  login(username: string, password: string): boolean  {
-    this.message = '';
-    if (!this.authService.login(username, password))  {
-      this.message = 'Incorrect credentials.';
-      setTimeout(function() {
-        this.message = '';
-      }.bind(this), 2500);
-    }
-    return false;
-    
+  ngOnInit() {
+    //reset login status
+    this.authenticationService.logout();
+
+    //get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
   }
 
-  logout(): boolean {
-    this.authService.logout();
-    return false;
+  login() {
+    this.loading = true;
+    this.authenticationService.login(this.model.username, this.model.password)
+    .subscribe(
+      data => {
+        this.router.navigate([this.returnUrl]); 
+      },
+      error => {
+        this.alertService.error(error);
+        this.loading = false;
+      }
+    )
   }
 
-  private onLoginSuccessfully(data: any) : void {
-    this.globalEventsManager.showNavBar(true);
-    this._router.navigate(['Home']);
-  }
 }

@@ -9,10 +9,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HikesComponent } from './hikes/hikes.component';
 import { ProtectedComponent } from './protected/protected.component';
-import { LoginComponent } from './login/login.component';
-
-import { AUTH_PROVIDERS } from './auth.service';
-import { LoggedInGuard } from './logged-in.guard';
 
 import {
   routes as childRoutes,
@@ -20,6 +16,8 @@ import {
 } from './hikes/hikes.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { GlobalEventsManagerService } from './global-events-manager.service';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   // basic routes
@@ -47,8 +45,9 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     ProtectedComponent,
+    NavBarComponent,
     LoginComponent,
-    NavBarComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -59,9 +58,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes) // <-- routes
   ],
   providers: [
-    AUTH_PROVIDERS,
-    LoggedInGuard,
-    GlobalEventsManagerService
   ],
   bootstrap: [AppComponent]
 })
