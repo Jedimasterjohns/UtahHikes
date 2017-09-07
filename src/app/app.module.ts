@@ -19,6 +19,7 @@ import {
   HikesModule
 } from './hikes/hikes.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { GlobalEventsManagerService } from './global-events-manager.service';
 
 const routes: Routes = [
   // basic routes
@@ -59,7 +60,8 @@ const routes: Routes = [
   ],
   providers: [
     AUTH_PROVIDERS,
-    LoggedInGuard
+    LoggedInGuard,
+    GlobalEventsManagerService
   ],
   bootstrap: [AppComponent]
 })
