@@ -10,35 +10,19 @@ import { HomeComponent } from './home/home.component';
 import { HikesComponent } from './hikes/hikes.component';
 import { ProtectedComponent } from './protected/protected.component';
 
-import {
-  routes as childRoutes,
-  HikesModule
-} from './hikes/hikes.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { GlobalEventsManagerService } from './global-events-manager.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AlertComponent } from './_directives/alert/alert.component';
+import { AuthGuard } from './_guards/auth.guard';
+import { AlertService } from './_services/alert.service';
+import { routing } from './app.routing';
 
-const routes: Routes = [
-  // basic routes
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-
-  // authentication demo
-  { path: 'login', component: LoginComponent },
-  {
-    path: 'protected',
-    component: ProtectedComponent,
-    canActivate: [ LoggedInGuard ]
-  },
-
-  // nested
-  {
-    path: 'hikes',
-    component: HikesComponent,
-    children: childRoutes
-  }
-];
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers/fake-backend';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -53,9 +37,8 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    HikesModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(routes) // <-- routes
+    routing
   ],
   providers: [
   ],
