@@ -18,6 +18,7 @@ import { AlertService } from './_services/alert.service';
 import { AuthService } from './_services/auth.service';
 import { UserService } from './_services/user.service';
 import { routing } from './app.routing';
+import { CollapseModule } from 'ng2-bootstrap';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/fake-backend';
@@ -38,6 +39,7 @@ import { BaseRequestOptions } from '@angular/http';
     BrowserModule,
     FormsModule,
     HttpModule,
+    CollapseModule,
     NgbModule.forRoot(),
     routing
   ],
