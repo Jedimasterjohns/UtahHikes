@@ -1,0 +1,13 @@
+#sign-up p {
+  position: relative;
+  font-size: 14px;
+  bottom: 40px;
+  left: 100px;
+}
+
+#sign-up a {
+  position: relative;
+  font-size: 14px;
+  bottom: 82px;
+  left: 239px;
+}

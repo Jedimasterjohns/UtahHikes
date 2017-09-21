@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
+  private loggedIn: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private http: Http) { }
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
+
+  constructor(private http: Http) {
+    this.loggedIn.next(!!localStorage.getItem('currentUser'))
+   }
 
   login(username: string, password: string) {
     return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))

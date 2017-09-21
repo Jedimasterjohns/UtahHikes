@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ProtectedComponent } from './protected/protected.component';
 
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
@@ -29,7 +28,6 @@ import { BaseRequestOptions } from '@angular/http';
   declarations: [
     AppComponent,
     HomeComponent,
-    ProtectedComponent,
     NavBarComponent,
     LoginComponent,
     AlertComponent,
