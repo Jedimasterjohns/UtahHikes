@@ -1,4 +1,4 @@
-<div *ngIf="loggedIn">
+<div *ngIf="loggedInNavBar">
   <nav class="navbar navbar-inverse">
     <div class="container-fluid header">
       <div class="navbar-header">
@@ -17,7 +17,7 @@
       </div>
 </div>
 
-<div *ngIf="!loggedIn">
+<div *ngIf="loggedInNavBar">
   <nav class="navbar navbar-inverse">
     <div class="container-fluid header">
       <div class="navbar-header">
@@ -31,7 +31,8 @@
       <div id="navbar" class="navbar-collapse collapse header" [collapse]="isCollapsed">
         <ul class="nav navbar-nav">
           <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-          <li><a [routerLink]="['/login']">Logout</a></li>
+          <li><a [routerLink]="['/login']">Login</a></li>
+          <li><a [routerLink]="['/register']">Register</a></li>
         </ul>
       </div>
 </div>

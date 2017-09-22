@@ -16,6 +16,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { AlertService } from './_services/alert.service';
 import { AuthService } from './_services/auth.service';
 import { UserService } from './_services/user.service';
+import { GlobalEventsManagerService } from './_services/global-events-manager.service';
 import { routing } from './app.routing';
 import { CollapseModule } from 'ng2-bootstrap';
 
@@ -45,6 +46,7 @@ import { BaseRequestOptions } from '@angular/http';
         AuthGuard,
         AlertService,
         AuthService,
+        GlobalEventsManagerService,
         UserService,
  
         // providers used to create fake backend

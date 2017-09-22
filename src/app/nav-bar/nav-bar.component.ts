@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
+import { GlobalEventsManagerService } from '../_services/global-events-manager.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,13 +7,15 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  loggedIn: any;
+  loggedInNavBar: boolean = false;
 
-  constructor(private authenticationService: AuthService) {
-    this.loggedIn = this.authenticationService.isLoggedIn;
+  constructor(private globalEventsManager: GlobalEventsManagerService) {
   }
 
   ngOnInit() {
+    this.globalEventsManager.loggedInNavBar.subscribe((mode: any) => {
+      return this.loggedInNavBar = mode;
+    });
   }
 
 }
