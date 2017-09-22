@@ -1,19 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { GlobalEventsManagerService } from './global-events-manager.service';
+import { CanActivate } from '@angular/router';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AuthService {
-  private loggedIn: Subject<boolean> = new Subject<boolean>();
+export class AuthService implements CanActivate {
 
-  get isLoggedIn() {
-    return this.loggedIn.asObservable();
-  }
-
-  constructor(private http: Http) {
-    this.loggedIn.next(!!localStorage.getItem('currentUser'))
+ 
+  constructor(private http: Http, private globalEventsManager: GlobalEventsManagerService) {
    }
 
   login(username: string, password: string) {
@@ -33,6 +29,16 @@ export class AuthService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+  }
+
+  canActivate() {
+    if (localStorage.getItem('currentUser')) {
+      this.globalEventsManager.loggedInNavBar.emit(true);
+      return true;
+    }
+    else {
+      this.globalEventsManager.loggedInNavBar.emit(false);
+    }
   }
 
 }
