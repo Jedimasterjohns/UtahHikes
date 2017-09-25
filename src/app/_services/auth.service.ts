@@ -33,12 +33,10 @@ export class AuthService implements CanActivate {
 
   canActivate() {
     if (localStorage.getItem('currentUser')) {
-      this.globalEventsManager.loggedInNavBar.emit(true);
+      this.globalEventsManager.loggedInNavBar(true);
       return true;
     }
-    else {
-      this.globalEventsManager.loggedInNavBar.emit(false);
-    }
+    else {  this.globalEventsManager.loggedInNavBar(false);  }
   }
 
 }

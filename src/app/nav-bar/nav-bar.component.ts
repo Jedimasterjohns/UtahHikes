@@ -13,8 +13,10 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globalEventsManager.loggedInNavBar.subscribe((mode: any) => {
-      return this.loggedInNavBar = mode;
+    this.globalEventsManager.loggedInNavBarEmitter.subscribe((mode) => {
+      if (mode !==null) {
+        this.loggedInNavBar = mode;
+      }
     });
   }
 
