@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AlertService } from '../_services/alert.service';
 import { UserService } from '../_services/user.service'; 
+import { AuthService } from '../_services/auth.service';
+import { GlobalEventsManagerService } from '../_services/global-events-manager.service';
 
 @Component({
   moduleId: module.id,
@@ -10,14 +12,23 @@ import { UserService } from '../_services/user.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent  {
+export class RegisterComponent implements OnInit {
   model: any = {};
   loading = false;
+  returnUrl: string;
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private authenticationService: AuthService,
+    private globalEventsManager: GlobalEventsManagerService) { }
+
+  ngOnInit() {
+    //get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
 
     register()  {
       this.loading = true;
@@ -33,7 +44,22 @@ export class RegisterComponent  {
             this.alertService.error(error);
             this.loading = false;
           }
-        )
+        );
+        this.authenticationService.login(this.model.username, this.model.password)
+        .subscribe(
+          data => {
+            this.promise(data); 
+          },
+          error => {
+            this.alertService.error(error);
+            this.loading = false;
+          }
+        );
+    }
+
+    private promise(data: any) {
+      this.globalEventsManager.loggedInNavBar.emit(true);
+      this.router.navigate([this.returnUrl]);
     }
 }
 
