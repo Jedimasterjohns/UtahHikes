@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GlobalEventsManagerService } from '../_services/global-events-manager.service';
 
 @Component({
@@ -6,18 +6,13 @@ import { GlobalEventsManagerService } from '../_services/global-events-manager.s
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
   loggedInNavBar: boolean = false;
 
   constructor(private globalEventsManager: GlobalEventsManagerService) {
-  }
-
-  ngOnInit() {
-    this.globalEventsManager.loggedInNavBarEmitter.subscribe((mode) => {
-      if (mode !==null) {
-        this.loggedInNavBar = mode;
-      }
-    });
+    this.globalEventsManager.loggedInNavBar.subscribe((data: boolean) => {
+      this.loggedInNavBar = data;
+    }, error => console.log(error));
   }
 
 }

@@ -6,7 +6,7 @@ import { CanActivate } from '@angular/router';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AuthService implements CanActivate {
+export class AuthService {
 
  
   constructor(private http: Http, private globalEventsManager: GlobalEventsManagerService) {
@@ -29,14 +29,8 @@ export class AuthService implements CanActivate {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    this.globalEventsManager.loggedInNavBar.emit(false);
   }
 
-  canActivate() {
-    if (localStorage.getItem('currentUser')) {
-      this.globalEventsManager.loggedInNavBar(true);
-      return true;
-    }
-    else {  this.globalEventsManager.loggedInNavBar(false);  }
-  }
 
 }

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, } from '@angular/router';
 
 import { AlertService } from '../_services/alert.service';
 import { AuthService } from '../_services/auth.service';
+import { GlobalEventsManagerService } from '../_services/global-events-manager.service';
 
 @Component({
   moduleId: module.id,
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthService,
-    private alertService: AlertService) { }
+    private alertService: AlertService,
+    private globalEventsManager: GlobalEventsManagerService) { }
 
   ngOnInit() {
     //reset login status
@@ -34,13 +36,18 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.model.username, this.model.password)
     .subscribe(
       data => {
-        this.router.navigate([this.returnUrl]); 
+        this.promise(data); 
       },
       error => {
         this.alertService.error(error);
         this.loading = false;
       }
     )
+  }
+
+  private promise(data: any) {
+    this.globalEventsManager.loggedInNavBar.emit(true);
+    this.router.navigate([this.returnUrl])
   }
 
 }

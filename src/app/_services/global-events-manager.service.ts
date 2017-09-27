@@ -4,14 +4,10 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class GlobalEventsManagerService {
-  private _loggedInNavBar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
-  public loggedInNavBarEmitter: Observable<boolean> = this._loggedInNavBar.asObservable();
+  public loggedInNavBar: EventEmitter<boolean> = new EventEmitter();
 
 
 constructor() {}
 
-loggedInNavBar(ifShow: boolean) {
-  this._loggedInNavBar.next(ifShow);
-}
 
 }
