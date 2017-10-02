@@ -1,13 +1,9 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 
 @Injectable()
 export class GlobalEventsManagerService {
-  public loggedInNavBar: EventEmitter<boolean> = new EventEmitter();
+  @Output loggedInNavBar: EventEmitter<boolean> = new EventEmitter();
 
 
 constructor() {}
-
-
 }

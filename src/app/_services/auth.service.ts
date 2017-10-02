@@ -20,6 +20,7 @@ export class AuthService {
         if (user && user.token) {
           // store user details and rkj token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
+          this.globalEventsManager.loggedInNavBar.emit(true);
         }
 
         return user;

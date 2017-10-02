@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
   }
 
   private promise(data: any) {
-    this.globalEventsManager.loggedInNavBar.emit(true);
     this.router.navigate([this.returnUrl])
   }
 

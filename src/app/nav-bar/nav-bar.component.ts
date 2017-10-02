@@ -4,10 +4,10 @@ import { GlobalEventsManagerService } from '../_services/global-events-manager.s
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
-  loggedInNavBar: boolean = false;
+  loggedInNavBar: boolean= false;
 
   constructor(private globalEventsManager: GlobalEventsManagerService) {
     this.globalEventsManager.loggedInNavBar.subscribe((data: boolean) => {
