@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../_services/alert.service';
 import { UserService } from '../_services/user.service'; 
 import { AuthService } from '../_services/auth.service';
-import { GlobalEventsManagerService } from '../_services/global-events-manager.service';
 
 @Component({
   moduleId: module.id,
@@ -22,8 +21,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private alertService: AlertService,
-    private authenticationService: AuthService,
-    private globalEventsManager: GlobalEventsManagerService) { }
+    private authenticationService: AuthService) { }
 
   ngOnInit() {
     //get return url from route parameters or default to '/'
@@ -58,7 +56,6 @@ export class RegisterComponent implements OnInit {
     }
 
     private promise(data: any) {
-      this.globalEventsManager.loggedInNavBar.emit(true);
       this.router.navigate([this.returnUrl]);
     }
 }

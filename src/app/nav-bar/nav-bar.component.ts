@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { GlobalEventsManagerService } from '../_services/global-events-manager.service';
+import { Observable } from 'rxjs/Observable';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,12 +8,10 @@ import { GlobalEventsManagerService } from '../_services/global-events-manager.s
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
-  loggedInNavBar: boolean= false;
+  loggedInNavBar: Observable<boolean>;
 
-  constructor(private globalEventsManager: GlobalEventsManagerService) {
-    this.globalEventsManager.loggedInNavBar.subscribe((data: boolean) => {
-      this.loggedInNavBar = data;
-    }, error => console.log(error));
+  constructor(private authService: AuthService) {
+    this.loggedInNavBar = authService.isLoggedIn();
   }
 
 }
