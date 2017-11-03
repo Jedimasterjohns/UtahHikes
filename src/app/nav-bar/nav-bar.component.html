@@ -10,7 +10,7 @@
         </button>
           <a class="navbar-brand brand" [routerLink]="['/home']">Utah Hikes</a>
       </div>
-  
+
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
@@ -21,13 +21,9 @@
               <div *ngIf="(loggedInNavBar | async); else notLoggedInNavBar">
                   <ul class="nav navbar-nav">
                     <li>
-                      <form action="" class="navbar-form search-form">
-                          <div class="form-group has-feedback">
-                              <label for="search" class="sr-only">Search</label>
-                              <input type="text" class="form-control" name="search" id="search" placeholder="Search Utah Hikes">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                            </div>
-                        </form>
+                          <form>
+                              <input placeholder=" Search Utah Hikes" type="text" name="search" id="search">
+                          </form>
                       </li>
                     <li><a [routerLink]="['/login']">Logout</a></li>
                   </ul>
@@ -35,13 +31,9 @@
                 <ng-template #notLoggedInNavBar>
                   <ul class="nav navbar-nav">
                     <li>
-                      <form action="" class="navbar-form search-form">
-                          <div class="form-group has-feedback">
-                              <label for="search" class="sr-only">Search</label>
-                              <input type="text" class="form-control" name="search" id="search" placeholder="Search Utah Hikes">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                            </div>
-                        </form>
+                      <form>
+                        <input placeholder=" Search Utah Hikes" type="text" name="search" id="search">
+                      </form>
                       </li>
                     <li><a [routerLink]="['/login']">Login</a></li>
                     <li><a [routerLink]="['/register']">Register</a></li>
