@@ -4,14 +4,15 @@
 
 header {
     margin: 0;
+    width: 100%;
     overflow-x: hidden;
 }
 
 .v-header {
-    height: 100vh;
-    display: flex;
+    width: 100vw;
     align-items: center;
     color: #fff;
+    display: flex;
 }
 
 .container {
@@ -28,7 +29,7 @@ header {
     left: 0;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden;   
 }
 
 .fullscreen-video-wrap video {
@@ -54,7 +55,7 @@ header {
 
 .header-content h1{
     font-size: 50px;
-    margin-bottom:0;
+    margin-bottom: 0;
     display: block;
     padding-bottom: 2rem;
 }
@@ -69,6 +70,7 @@ header {
 
 .section{
     padding:20px 0;
+    width: 100%;
   }
   
   .section-b{
