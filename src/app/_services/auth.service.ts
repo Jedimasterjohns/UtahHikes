@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
   private _loggedInNavBar: BehaviorSubject<boolean>= new BehaviorSubject<boolean>(this.hasCurrentUser());
- 
+
   constructor(private http: Http) {
    }
 
@@ -37,7 +37,7 @@ export class AuthService {
     this._loggedInNavBar.next(false);
   }
 
-  private hasCurrentUser() : boolean {
+  private hasCurrentUser(): boolean {
     return !!localStorage.getItem('currentUser');
   }
 
