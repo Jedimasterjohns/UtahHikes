@@ -23,6 +23,7 @@ import { CollapseModule } from 'ng2-bootstrap';
 import { fakeBackendProvider } from './_helpers/fake-backend';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
+import { HikesComponent } from './hikes/hikes.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { BaseRequestOptions } from '@angular/http';
     NavBarComponent,
     LoginComponent,
     AlertComponent,
-    RegisterComponent
+    RegisterComponent,
+    HikesComponent
   ],
   imports: [
     BrowserModule,
