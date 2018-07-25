@@ -1,5 +1,5 @@
 nav {
-  background-color: greenyellow;
+  background-color: white;
   margin: 0;
   z-index: 10;
 }
@@ -20,11 +20,11 @@ input[type=text] {
   width: 50px;
   box-sizing: border-box;
   border: none;
-  border-color: greenyellow;
+  border-color: white;
   border-radius: 4px;
-  background-color: greenyellow;
+  background-color: white;
   background: url('../../assets/toolbar_find.png') no-repeat scroll 10px 10px;
-  background-position: center;
+  background-position: left;
   padding: 15px 20px 12px 40px;
   -webkit-transition: width 0.4s ease-in-out, outline 0.4s, background-image 0.4s ease-in-out;
   transition: width 0.4s ease-in-out, outline 0.4s, background-image 0.4s ease-in-out;
@@ -34,5 +34,4 @@ input[type=text]:focus {
   width: 100%;
   border: none;
   outline: none;
-  background: greenyellow;
 }
