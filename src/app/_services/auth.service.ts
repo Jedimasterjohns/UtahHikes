@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private http: Http) {
    }
 
-  isLoggedIn() : Observable<boolean> {
+  isLoggedIn(): Observable<boolean> {
     return this._loggedInNavBar.asObservable();
   }
 

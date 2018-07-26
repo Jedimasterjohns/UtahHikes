@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService) { }
 
   ngOnInit() {
-    //reset login status
+    // reset login status
     this.authenticationService.logout();
 
-    //get return url from route parameters or default to '/'
+    // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.model.username, this.model.password)
     .subscribe(
       data => {
-        this.promise(data); 
+        this.promise(data);
       },
       error => {
         this.alertService.error(error);

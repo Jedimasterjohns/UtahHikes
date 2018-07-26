@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AlertService } from '../_services/alert.service';
-import { UserService } from '../_services/user.service'; 
+import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     private authenticationService: AuthService) { }
 
   ngOnInit() {
-    //get return url from route parameters or default to '/'
+    // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
         .subscribe(
           data => {
-            this.promise(data); 
+            this.promise(data);
           },
           error => {
             this.alertService.error(error);
