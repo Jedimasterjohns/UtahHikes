@@ -9,9 +9,13 @@ import { AuthService } from '../_services/auth.service';
 })
 export class NavBarComponent {
   loggedInNavBar: Observable<boolean>;
+  isCollapsed = true;
 
   constructor(private authService: AuthService) {
     this.loggedInNavBar = authService.isLoggedIn();
   }
 
+  toggleCollapsed(): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }
